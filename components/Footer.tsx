@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -7,12 +6,9 @@ const Footer: React.FC = () => {
             <div className="text-slate-400 text-sm">
                 <p>
                     Criado por{' '}
-                    <a 
-                        href="#" 
-                        className="font-semibold text-teal-400 hover:underline"
-                    >
+                    <span className="font-semibold text-teal-400">
                         Pyter Boulhosa Cunha
-                    </a>
+                    </span>
                     . Este é um projeto de estudo para a certificação CPA-20.
                 </p>
                 <p className="mt-4 text-xs text-slate-500">

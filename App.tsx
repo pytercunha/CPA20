@@ -1,5 +1,4 @@
 
-import React, { useState, useCallback } from 'react';
 import { StudyMode, McqItem, TrueFalseItem, Difficulty, QuizState, GroundingChunk } from './types';
 import LoadingSpinner from './components/LoadingSpinner';
 import McqCard from './components/McqCard';

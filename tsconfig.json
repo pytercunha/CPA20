@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "index.tsx", "types.ts", "App.tsx", "services/geminiService.ts", "components/McqCard.tsx", "components/TrueFalseCard.tsx", "components/ExplanationCard.tsx", "components/LoadingSpinner.tsx", "components/icons.tsx", "components/QuizNavigation.tsx", "components/QuizSummary.tsx", "components/ExamSelection.tsx", "vite.config.ts", "components/ResourceLinks.tsx", "components/Footer.tsx"],
+  "include": ["src", "index.tsx", "types.ts", "App.tsx", "services/geminiService.ts", "components/McqCard.tsx", "components/TrueFalseCard.tsx", "components/ExplanationCard.tsx", "components/LoadingSpinner.tsx", "components/icons.tsx", "components/QuizNavigation.tsx", "components/QuizSummary.tsx", "components/ExamSelection.tsx", "components/ResourceLinks.tsx", "components/Footer.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

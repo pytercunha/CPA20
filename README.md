@@ -16,27 +16,21 @@ Este é um projeto de um assistente de estudos para a certificação CPA-20, con
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <URL_DO_SEU_REPOSITORIO>
-    cd <NOME_DA_PASTA>
+    git clone https://github.com/romulobil/CPA20.git
+    cd CPA20
     ```
 
-2.  **Instale as dependências:**
+2.  **Gere a imagem :**
     ```bash
-    npm install
+    docker build -t cpa20 .
     ```
 
-3.  **Configure a Chave da API:**
-    - Crie um arquivo chamado `.env.local` na raiz do projeto.
-    - Adicione a sua chave da API do Gemini a este arquivo:
-      ```
-      API_KEY="SUA_CHAVE_DA_API_AQUI"
-      ```
-
-4.  **Inicie o servidor de desenvolvimento:**
+3.  **Inicie o servidor de desenvolvimento:**
+    Execute o container da imagem gerada no passo anterior
     ```bash
-    npm run dev
+    docker run -dp 8080:4173 --name cpa20 cpa20
     ```
-    Abra [http://localhost:5173](http://localhost:5173) (ou o endereço que aparecer no seu terminal) para ver a aplicação.
+    Abra [http://localhost:8080](http://localhost:8080) (ou o endereço que aparecer no seu terminal) para ver a aplicação.
 
 ## Como Publicar na Web (Deploy) com a Vercel
 

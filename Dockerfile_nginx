@@ -1,0 +1,47 @@
+# Usa uma imagem base com Node.js
+FROM node:18-alpine AS builder
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia o package.json e package-lock.json ou pnpm-lock / yarn.lock
+COPY package*.json ./
+# se usar outros arquivos lock, copiar também
+# COPY yarn.lock ./
+# COPY pnpm-lock.yaml ./
+
+# Instala as dependências
+RUN npm install --save-dev @types/node
+# ou: RUN yarn install --frozen-lockfile
+
+# Copia todos os arquivos do projeto para dentro do container
+COPY . .
+
+# Define variável de ambiente de build se necessário
+# Ex: VITE_API_KEY, ou outras variáveis
+#ENV VITE_API_KEY=${VITE_API_KEY}
+ENV API_KEY=AIzaSyDudRcWxm4P517DjhudmTi4KhmMRL0uem0
+
+# Gera a build de produção
+RUN npm run build
+
+# --------------------------------------------------
+
+# Etapa final: serve o app
+FROM nginx:stable-alpine
+
+# Remove configuração padrão do nginx se quiser customizar
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copia sua configuração de nginx (opcional)
+# COPY nginx.conf /etc/nginx/conf.d
+
+# Copia os arquivos de build da etapa anterior
+COPY --from=builder /app/dist /usr/share/nginx/html
+
+# Exponha a porta que o nginx vai usar
+EXPOSE 80
+
+# Comando para rodar o nginx em foreground
+CMD ["nginx", "-g", "daemon off;"]
+

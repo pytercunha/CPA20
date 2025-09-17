@@ -71,7 +71,7 @@ export async function generateMcqs(topic: string, difficulty: Difficulty, count:
         },
     });
 
-    const jsonText = response.text.trim();
+    const jsonText = (response.text ?? "").trim();
     try {
         return JSON.parse(jsonText);
     } catch (e) {
@@ -94,7 +94,7 @@ export async function generateGroundedMcqs(topic: string, difficulty: Difficulty
 
     const sources = response.candidates?.[0]?.groundingMetadata?.groundingChunks ?? [];
 
-    let jsonText = response.text.trim();
+    let jsonText = (response.text ?? "").trim();
 
     // The model response might be wrapped in markdown.
     const match = jsonText.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
@@ -123,7 +123,7 @@ export async function generateTrueFalse(topic: string, difficulty: Difficulty, c
         },
     });
 
-    const jsonText = response.text.trim();
+    const jsonText = (response.text ?? "").trim();
     try {
         return JSON.parse(jsonText);
     } catch (e) {
@@ -140,5 +140,5 @@ export async function explainConcept(topic: string): Promise<string> {
         contents: prompt
     });
 
-    return response.text;
+    return response.text ?? "";
 }
